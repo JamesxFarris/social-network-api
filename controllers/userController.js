@@ -1,4 +1,3 @@
-const { get } = require("mongoose");
 const User = require("../models/User");
 
 module.exports = {
