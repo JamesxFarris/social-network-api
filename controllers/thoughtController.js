@@ -27,7 +27,6 @@ const thoughtController = {
       });
   },
 
-  // Create a new thought
   createThought(req, res) {
     Thought.create(req.body)
       .then((thought) => {
@@ -37,9 +36,13 @@ const thoughtController = {
           { new: true }
         );
       })
-      .then((user) =>
-        !user ? res.status(404) : res.json(`"Created the thought" ${user}`)
-      )
+      .then((user) => {
+        if (!user) {
+          res.status(404).json({ message: "User not found!" });
+        } else {
+          res.json("Created the thought");
+        }
+      })
       .catch((err) => {
         console.log(err);
         res.status(500).json(err);
