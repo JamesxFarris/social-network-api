@@ -19,17 +19,17 @@ router
 
 // /api/users/:userId
 router
-  .route("/:userId")
-  // GET a single user by its _id and populated thought and friend data
+  .route("/:id")
+  // GET a single user by its  and populated thought and friend data
   .get(getUserById)
-  // PUT to update a user by its _id
+  // PUT to update a user by its
   .put(updateUser)
-  // DELETE to remove user by its _id
+  // DELETE to remove user by its
   .delete(deleteUser);
 
 // /api/users/:userId/friends/:friendId
 router
-  .route("/:userId/friends/:friendId")
+  .route("/:id/friends/:friendId")
   // POST to add a new friend to a user's friend list
   .post(addFriend)
   // DELETE to remove a friend from a user's friend list
