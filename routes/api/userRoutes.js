@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 // Imports the controller functions
-const userController = require("../controllers/userController");
+const userController = require("../../controllers/userController");
 
 // GET /api/users
 router.get("/users", userController.getAllUsers);
