@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
-// Import the controller functions
-const thoughtController = require("../controllers/thoughtController");
+// Imports the controller functions
+const thoughtController = require("../../controllers/thoughtController");
 
 // Define routes using the controller functions
 

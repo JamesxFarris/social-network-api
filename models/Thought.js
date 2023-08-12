@@ -1,26 +1,35 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
+const { formatDate, dateFormat } = require("../utils/helpers");
 
 // Create reaction schema
-const reactionSchema = new Schema({
-  reactionId: {
-    type: Schema.Types.ObjectId,
-    default: () => new Types.ObjectId(),
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new Types.ObjectId(),
+    },
+    reactionBody: {
+      type: String,
+      minLength: 1,
+      maxLength: 280,
+      required: true,
+    },
+    username: {
+      type: String,
+      required: true,
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: (createdAtVal) => formatDate(createdAtVal),
+    },
   },
-  reactionBody: {
-    type: String,
-    required: true,
-    maximumLength: 280,
-  },
-  username: {
-    type: String,
-    required: true,
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-    get: (createdAtVal) => dateFormat(createdAtVal),
-  },
-});
+  {
+    toJSON: {
+      getters: true,
+    },
+  }
+);
 
 // Create thought schema and inject reaction schema
 const thoughtSchema = new Schema({
@@ -31,8 +40,8 @@ const thoughtSchema = new Schema({
   thoughtText: {
     type: String,
     required: true,
-    minimumLength: 1,
-    maximumLength: 280,
+    minlength: 1,
+    maxlength: 280,
   },
 
   createdAt: {

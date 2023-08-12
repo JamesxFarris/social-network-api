@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("./config/connection");
-const thoughtRoutes = require("./routes/thoughtRoutes"); // Import the thoughtRoutes
+const thoughtRoutes = require("./routes/api/thoughtRoutes"); // Import the thoughtRoutes
+const userRoutes = require("./routes/api/userRoutes"); // Import the thoughtRoutes
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -9,7 +10,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Use thought routes
-app.use("/api", thoughtRoutes);
+app.use("/thoughts", thoughtRoutes);
+
+// Use user routes
+app.use("/users", userRoutes);
 
 db.once("open", () => {
   app.listen(PORT, () => console.log(`Connected on http://localhost:${PORT}`));
