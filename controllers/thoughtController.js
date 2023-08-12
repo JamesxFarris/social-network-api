@@ -13,7 +13,7 @@ const thoughtController = {
 
   // Get a single thought by its id
   getThoughtById(req, res) {
-    Thought.findOne({ _id: req.params.id })
+    Thought.findOne({ _id: req.params.thoughtId })
       .then((thoughtData) => {
         if (!thoughtData) {
           res.status(404).json({ message: "No thought found with this id!" });
@@ -38,7 +38,7 @@ const thoughtController = {
         );
       })
       .then((user) =>
-        !user ? res.status(404) : res.json("Created the thought")
+        !user ? res.status(404) : res.json(`"Created the thought" ${user}`)
       )
       .catch((err) => {
         console.log(err);
@@ -49,7 +49,7 @@ const thoughtController = {
   // Update a thought by its id
   updateThought(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.thoughtId },
       { $set: req.body },
       { runValidators: true, new: true }
     )
@@ -86,7 +86,7 @@ const thoughtController = {
   // Add a reaction to a thought
   addReaction(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.thoughtId },
       { $addToSet: { reactions: req.body } },
       { runValidators: true, new: true }
     )
@@ -103,7 +103,7 @@ const thoughtController = {
   // Delete a reaction from a thought
   deleteReaction(req, res) {
     Thought.findOneAndUpdate(
-      { _id: req.params.id },
+      { _id: req.params.thoughtId },
       { $pull: { reactions: { reactionId: req.params.reactionId } } },
       { runValidators: true, new: true }
     )
