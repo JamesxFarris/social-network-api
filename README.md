@@ -6,6 +6,11 @@
 <strong> A Mongo driven mock API for social media </strong>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+![Express](https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
+
+
 
 [https://github.com/JamesxFarris/social-network-api/assets/51385562/4a1b819a-f9db-4887-85af-ec021499b3f5](https://github.com/JamesxFarris/social-network-api/assets/51385562/4a1b819a-f9db-4887-85af-ec021499b3f5)
 
